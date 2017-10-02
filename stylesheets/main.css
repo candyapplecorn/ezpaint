@@ -1,0 +1,56 @@
+body * {
+	box-sizing: border-box;
+}
+#container {
+	width: 100%;
+}
+#canvas {
+	border: 1px solid black;
+	width: 100%;
+}
+#bottom-gui-container {
+	display: flex;
+	justify-content: center;
+	background: black;
+}
+
+#bottom-gui {
+	display: flex;
+	justify-content: center;
+}
+
+.gui-color {
+	width: 4em;
+	height: 4em;
+	margin: 0.25em;
+	border-radius: 50%;
+}
+
+.selected {
+	border: 5px solid white;
+}
+
+#red {
+	background: red
+}
+#blue {
+	background: blue
+}
+#white {
+	background: white
+}
+#black {
+	background: black
+}
+#yellow {
+	background: yellow
+}
+#green {
+	background: green
+}
+#orange {
+	background: orange
+}
+#purple {
+	background: purple
+}
