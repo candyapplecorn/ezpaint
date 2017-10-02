@@ -1,0 +1,26 @@
+{
+  "name": "ezpaint",
+  "version": "1.0.0",
+  "description": "a simple javascript canvas painter program",
+  "main": "webpack.config.js",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"webpack": "./node_modules/.bin/webpack-dev-server --content-base build/"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/candyapplecorn/ezpaint.git"
+  },
+  "author": "joseph burger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/candyapplecorn/ezpaint/issues"
+  },
+  "homepage": "https://github.com/candyapplecorn/ezpaint#readme"
+}
