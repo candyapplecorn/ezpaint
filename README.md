@@ -17,7 +17,7 @@ Confronting users with too many choices risks the chance of overloading their mi
 
 _look away while yee still may_
 
-EZPaint will keep your users' brains **ICY COOL** by offering only the most delicious choices.
+EZPaint keeps users' brains **ICY COOL** by offering only the most delicious choices.
 
 ### _Cross Platform!_
 
