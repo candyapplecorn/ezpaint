@@ -45,6 +45,11 @@ I think I can get it working within four days, and use all the spare time I have
 
 ## Timeline
 
+### Weekend
+  * [Researched disabling navigation on swipe](    * https://stackoverflow.com/questions/30636930/disable-web-page-navigation-on-swipeback-and-forward
+)
+
+
 ### Monday
   * Set up all files + webpack
   * Get color picker working
