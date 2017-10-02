@@ -75,4 +75,4 @@ I think I can get it working within four days, and use all the spare time I have
     
 ## Wireframe
 
-![Mock Desktop View](assets/mock_desktop.png)
+![Mock Desktop View](assets/mockup_desktop.png)
