@@ -1,6 +1,8 @@
 # ezpaint
 Simple paint program in a webpage
 
+# [PROPOSAL](PROPOSAL.md)
+
 ## Features
 
 ### _Unleash your Artistic Potential_
