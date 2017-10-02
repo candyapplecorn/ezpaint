@@ -11,7 +11,13 @@ Simple paint program in a webpage
 
 ### _User Friendly!_
 
-Confronting users with too many choices risks the chance of overloading their minds and causing **neural burnout**. EZPaint will keep your users' brains **icy cool** by offering only the most delicious choices.
+Confronting users with too many choices risks the chance of overloading their minds and causing **NEURAL BURNOUT**. 
+
+![Too Many Options](assets/too_many_options.png)
+
+_look away while yee still may_
+
+EZPaint will keep your users' brains **ICY COOL** by offering only the most delicious choices.
 
 ### _Cross Platform!_
 
