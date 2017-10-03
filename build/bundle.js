@@ -184,6 +184,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _util = __webpack_require__(4);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var TOOL = {
@@ -220,8 +222,7 @@ var Easle = function () {
     _classCallCheck(this, Easle);
 
     this.canvas = canvas;
-    this.canvas.width = this.canvas.clientWidth;
-    this.canvas.height = this.canvas.clientHeight;
+    this.resize();
 
     this.configureContainer(canvas);
 
@@ -244,12 +245,13 @@ var Easle = function () {
       });
       ['mouseup', 'mouseleave', 'blur'].forEach(function (ev) {
         return canvas.addEventListener(ev, function (_) {
-          return _this2.mouse.isDown = false;
+          _this2.mouse.isDown = false;
+          _this2.tool.points = [];
         });
       });
 
-      canvas.addEventListener('resize', function (e) {
-        // todo: resize
+      window.addEventListener('resize', function (e) {
+        _this2.resize();
       });
 
       canvas.addEventListener('mousemove', function (e) {
@@ -259,20 +261,33 @@ var Easle = function () {
   }, {
     key: 'handleMouseMove',
     value: function handleMouseMove(e) {
-      var clientX = e.clientX,
-          clientY = e.clientY;
-      var screenX = e.screenX,
-          screenY = e.screenY;
+      var x = e.clientX,
+          y = e.clientY;
       var canvas = this.canvas,
           color = this.color,
           tool = this.tool,
           radius = this.radius;
 
+      tool.points.push({ x: x, y: y });
 
       switch (tool.type) {
         case "paintbrush":
-          tool.drawCircle({ canvas: canvas, color: color, x: clientX, y: clientY, radius: radius });
+          if (tool.points.length < 2) tool.drawCircle({ canvas: canvas, color: color, x: x, y: y, radius: radius });else {
+            var ipoints = (0, _util.interpolateBetweenPoints)(tool.points[0], tool.points[1]);
+            ipoints.forEach(function (_ref3) {
+              var x = _ref3.x,
+                  y = _ref3.y;
+              return tool.drawCircle({ canvas: canvas, color: color, x: x, y: y, radius: radius });
+            });
+            tool.points.shift();
+          }
       }
+    }
+  }, {
+    key: 'resize',
+    value: function resize() {
+      this.canvas.width = this.canvas.clientWidth;
+      this.canvas.height = window.innerHeight * 3 / 5;
     }
   }]);
 
@@ -280,6 +295,55 @@ var Easle = function () {
 }();
 
 exports.default = Easle;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var interpolate = exports.interpolate = function interpolate(_ref) {
+  var x = _ref.x,
+      x0 = _ref.x0,
+      y0 = _ref.y0,
+      x1 = _ref.x1,
+      y1 = _ref.y1;
+
+  var numerator = y0 * (x1 - x) + y1 * (x - x0);
+  var denominator = x1 - x0;
+
+  return Math.floor(numerator / denominator);
+};
+
+var interpolateBetweenPoints = exports.interpolateBetweenPoints = function interpolateBetweenPoints(_ref2, _ref3) {
+  var x0 = _ref2.x,
+      y0 = _ref2.y;
+  var x1 = _ref3.x,
+      y1 = _ref3.y;
+
+  var points = [];
+
+  if (x0 > x1) {
+    ;
+
+    var _ref4 = [x1, y1, x0, y0];
+    x0 = _ref4[0];
+    y0 = _ref4[1];
+    x1 = _ref4[2];
+    y1 = _ref4[3];
+  }var x = x0;
+
+  while (x < x1) {
+    x++;
+    points.push({ x: x, y: interpolate({ x0: x0, y0: y0, x1: x1, y1: y1, x: x }) });
+  }
+
+  return points;
+};
 
 /***/ })
 /******/ ]);

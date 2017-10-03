@@ -1,3 +1,5 @@
+import { interpolateBetweenPoints } from './util';
+
 const TOOL = {
   paintbrush: {
     type: "paintbrush",
@@ -18,8 +20,7 @@ const MOUSE = {
 class Easle {
     constructor({ canvas, colorPicker }){
       this.canvas = canvas;
-      this.canvas.width = this.canvas.clientWidth
-      this.canvas.height = this.canvas.clientHeight
+      this.resize();
 
       this.configureContainer(canvas)
 
@@ -33,11 +34,14 @@ class Easle {
     configureContainer(canvas){
       canvas.addEventListener('mousedown', e => (this.mouse.isDown = true));
       ['mouseup', 'mouseleave', 'blur'].forEach(ev =>
-        canvas.addEventListener(ev, _ => (this.mouse.isDown = false))
+        canvas.addEventListener(ev, _ => {
+          this.mouse.isDown = false;
+          this.tool.points = [];
+        })
       )
 
-      canvas.addEventListener('resize', e => {
-        // todo: resize
+      window.addEventListener('resize', e => {
+        this.resize()
       });
 
       canvas.addEventListener('mousemove', e => {
@@ -47,14 +51,25 @@ class Easle {
     }
 
     handleMouseMove(e){
-      const { clientX, clientY } = e
-      const { screenX, screenY } = e
+      const { clientX: x, clientY: y } = e
       const { canvas, color, tool, radius } = this
+      tool.points.push({x, y})
 
       switch (tool.type){
         case "paintbrush":
-          tool.drawCircle({ canvas, color, x: clientX, y: clientY, radius })
+          if (tool.points.length < 2)
+            tool.drawCircle({ canvas, color, x, y, radius })
+          else {
+            const ipoints = interpolateBetweenPoints(tool.points[0], tool.points[1])
+            ipoints.forEach(({x, y}) => tool.drawCircle({canvas, color, x, y, radius }))
+            tool.points.shift()
+          }
       }
+    }
+
+    resize(){
+      this.canvas.width = this.canvas.clientWidth;
+      this.canvas.height = window.innerHeight * 3 / 5;
     }
 }
 
