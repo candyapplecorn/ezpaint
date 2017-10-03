@@ -32,7 +32,11 @@ class Easle {
     }
 
     configureContainer(canvas){
-      canvas.addEventListener('mousedown', e => (this.mouse.isDown = true));
+      canvas.addEventListener('mousedown', e => {
+        this.mouse.isDown = true;
+        this.handleMouseMove(e);
+      });
+
       ['mouseup', 'mouseleave', 'blur'].forEach(ev =>
         document.addEventListener(ev, _ => {
           this.mouse.isDown = false;
@@ -72,6 +76,13 @@ class Easle {
             tool.points.shift()
           }
       }
+    }
+
+    clear(){
+      const context = this.canvas.getContext('2d')
+      context.fillStyle = "white"
+      context.fillRect(0, 0, this.canvas.width, this.canvas.height)
+      context.fillStyle = this.color
     }
 
     resize(){
