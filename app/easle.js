@@ -1,19 +1,6 @@
 import { interpolateBetweenPoints } from './util';
+import TOOLS from './tools';
 
-const TOOL = {
-  paintbrush: {
-    type: "paintbrush",
-    points: [],
-    drawCircle: ({ canvas, color, x, y, radius }) => {
-      const context = canvas.getContext('2d');
-
-      context.beginPath();
-      context.arc(x - radius, y - radius, radius, 0, 2 * Math.PI, false);
-      context.fillStyle = color;
-      context.fill();
-    }
-  }
-};
 const MOUSE = {
   x: 0, y: 0, isDown: false
 }
@@ -27,7 +14,7 @@ class Easle {
       colorPicker.subscribers.push(cp => (this.color = cp.color))
       this.color = colorPicker.color
       this.radius = 10;
-      this.tool = TOOL.paintbrush
+      this.tool = TOOLS.paintbrush
       this.mouse = MOUSE
     }
 
@@ -44,7 +31,7 @@ class Easle {
         })
       )
 
-      window.addEventListener('resize', e => {
+      window.addEventListener('resize', _ => {
         this.resize()
       });
 
