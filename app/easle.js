@@ -60,9 +60,17 @@ class Easle {
           if (tool.points.length < 2)
             tool.drawCircle({ canvas, color, x, y, radius })
           else {
-            const ipoints = interpolateBetweenPoints(tool.points[0], tool.points[1])
+            const ipoints = [];
+
+            tool.points.slice(1).forEach((p, i, a) => {
+              ipoints.push(
+              ... interpolateBetweenPoints(tool.points[i], p)
+            )})
+
             ipoints.forEach(({x, y}) => tool.drawCircle({canvas, color, x, y, radius }))
-            tool.points.shift()
+
+            if (tool.points.length > 4)
+              tool.points.shift()
           }
       }
     }

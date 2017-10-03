@@ -186,6 +186,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _util = __webpack_require__(4);
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var TOOL = {
@@ -273,13 +275,19 @@ var Easle = function () {
       switch (tool.type) {
         case "paintbrush":
           if (tool.points.length < 2) tool.drawCircle({ canvas: canvas, color: color, x: x, y: y, radius: radius });else {
-            var ipoints = (0, _util.interpolateBetweenPoints)(tool.points[0], tool.points[1]);
+            var ipoints = [];
+
+            tool.points.slice(1).forEach(function (p, i, a) {
+              ipoints.push.apply(ipoints, _toConsumableArray((0, _util.interpolateBetweenPoints)(tool.points[i], p)));
+            });
+
             ipoints.forEach(function (_ref3) {
               var x = _ref3.x,
                   y = _ref3.y;
               return tool.drawCircle({ canvas: canvas, color: color, x: x, y: y, radius: radius });
             });
-            tool.points.shift();
+
+            if (tool.points.length > 4) tool.points.shift();
           }
       }
     }
