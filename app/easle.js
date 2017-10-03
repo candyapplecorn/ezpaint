@@ -3,7 +3,8 @@ import TOOLS from './tools';
 
 const MOUSE = {
   x: 0, y: 0, isDown: false
-}
+};
+
 class Easle {
     constructor({ canvas, colorPicker }){
       this.canvas = canvas;
@@ -16,6 +17,7 @@ class Easle {
       this.radius = 10;
       this.tool = TOOLS.paintbrush
       this.mouse = MOUSE
+      this.brushType = "circle"
     }
 
     configureContainer(canvas){
@@ -31,9 +33,7 @@ class Easle {
         })
       )
 
-      window.addEventListener('resize', _ => {
-        this.resize()
-      });
+      window.addEventListener('resize', this.resize)
 
       canvas.addEventListener('mousemove', e => {
         if (this.mouse.isDown)
@@ -43,13 +43,13 @@ class Easle {
 
     handleMouseMove(e){
       const { clientX: x, clientY: y } = e
-      const { canvas, color, tool, radius } = this
+      const { canvas, color, tool, radius, brushType } = this
       tool.points.push({x, y})
 
       switch (tool.type){
         case "paintbrush":
           if (tool.points.length < 2)
-            tool.drawCircle({ canvas, color, x, y, radius })
+            tool[brushType]({ canvas, color, x, y, radius })
           else {
             const ipoints = [];
 
@@ -58,7 +58,7 @@ class Easle {
               ... interpolateBetweenPoints(tool.points[i], p)
             )})
 
-            ipoints.forEach(({x, y}) => tool.drawCircle({canvas, color, x, y, radius }))
+            ipoints.forEach(({x, y}) => tool[brushType]({canvas, color, x, y, radius }))
 
             tool.points.shift()
           }
