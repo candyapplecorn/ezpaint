@@ -1,10 +1,11 @@
 class ColorPicker {
-				constructor(colorContainer){
-								this.colorContainer = colorContainer
-								this.configureContainer(colorContainer)
+				constructor(container, className, initSelect){
+								this.container = container
+								this.configureContainer(container)
 
 								this.subscribers = [];
-								this.setSelected('black')
+								this.setSelected(initSelect)
+								this.className = className
 				}
 				emit(){
 					this.subscribers.forEach(s => {
@@ -18,19 +19,19 @@ class ColorPicker {
 				handleClick(e){
 								e.stopPropagation();
 								const { target } = e;
-								if (!target.classList.contains('gui-color'))
+								if (!target.classList.contains(this.className))
 									return;
 
 
 								this.removeSelected()
 								this.setSelected(target.getAttribute('id'))
 				}
-				setSelected(color){
-								this.color = color
-								const { children } = this.colorContainer
+				setSelected(value){
+								this.value = value
+								const { children } = this.container
 
 								Array.prototype.find.call(
-									children, c => c.getAttribute('id') == color
+									children, c => c.getAttribute('id') == value
 								)
 								.classList
 								.add('selected')
@@ -39,7 +40,7 @@ class ColorPicker {
 				}
 				removeSelected(){
 								Array.prototype.forEach.call(
-									this.colorContainer.children,
+									this.container.children,
 									c => c.classList.remove('selected')
 								);
 				}

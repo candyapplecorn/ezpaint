@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="343pt"
+   height="340pt"
+   id="svg3088"
+   version="1.1"
+   inkscape:version="0.48.1 "
+   sodipodi:docname="New document 7">
+  <defs
+     id="defs3090" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.8"
+     inkscape:cx="151.44231"
+     inkscape:cy="168.57247"
+     inkscape:document-units="pt"
+     inkscape:current-layer="layer1"
+     id="namedview3092"
+     showgrid="false"
+     inkscape:window-width="1068"
+     inkscape:window-height="648"
+     inkscape:window-x="722"
+     inkscape:window-y="159"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3094">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#ffffff"
+       id="use2405"
+       d="m 40.541385,202.76134 2.79487,8.25047 -7.0454,-5.19261 -7.045381,5.19261 2.911321,-8.25047 -7.220062,-5.01951 8.792182,0.11539 2.56194,-8.30815 2.56197,8.36584 8.8504,-0.17308 -7.16184,5.01951 z"
+       inkscape:connector-curvature="0" />
+    <use
+       transform="matrix(16.46216,0,0,16.46216,-386.30984,-3089.2682)"
+       id="use2407-0"
+       x="0"
+       y="0"
+       width="560"
+       height="280"
+       xlink:href="#use2405"
+       style="stroke:#000000" />
+  </g>
+</svg>

@@ -8,12 +8,30 @@ body * {
 	border: 1px solid black;
 	width: 100%;
 }
-canvas:hover {
-	cursor: crosshair;
+canvas:hover { cursor: crosshair; }
+#circle-img{
+	border: 3px solid black;
+	border-radius: 50%;
+	background: white;
+}
+#square-img{
+	border: 3px solid black;
+	background: white;
 }
 .brush-type {
+	box-sizing: border-box;
 	background: white;
 	margin: 0.25em;
+	padding: 0.5em;
+	border-radius: 1em;
+	border: 5px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.brush-type div, .brush-type img {
+	width: 3em;
+	height: 3em;
 }
 #brush-types {
 	display: flex;
@@ -22,6 +40,7 @@ canvas:hover {
 }
 #top-gui {
 	width: 100%;
+	background: white;
 }
 
 #bottom-gui-container, #top-gui-container {
@@ -42,7 +61,7 @@ canvas:hover {
 	border-radius: 50%;
 }
 
-.selected {
+.selected, .gui-color:hover {
 	border: 5px solid white;
 }
 
