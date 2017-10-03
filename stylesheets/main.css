@@ -8,6 +8,9 @@ body * {
 	border: 1px solid black;
 	width: 100%;
 }
+canvas:hover {
+	cursor: crosshair;
+}
 #bottom-gui-container {
 	display: flex;
 	justify-content: center;

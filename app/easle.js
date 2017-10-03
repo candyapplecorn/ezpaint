@@ -8,7 +8,7 @@ const TOOL = {
       const context = canvas.getContext('2d');
 
       context.beginPath();
-      context.arc(x, y, radius, 0, 2 * Math.PI, false);
+      context.arc(x - radius, y - radius, radius, 0, 2 * Math.PI, false);
       context.fillStyle = color;
       context.fill();
     }
@@ -34,7 +34,7 @@ class Easle {
     configureContainer(canvas){
       canvas.addEventListener('mousedown', e => (this.mouse.isDown = true));
       ['mouseup', 'mouseleave', 'blur'].forEach(ev =>
-        canvas.addEventListener(ev, _ => {
+        document.addEventListener(ev, _ => {
           this.mouse.isDown = false;
           this.tool.points = [];
         })
@@ -69,8 +69,7 @@ class Easle {
 
             ipoints.forEach(({x, y}) => tool.drawCircle({canvas, color, x, y, radius }))
 
-            //if (tool.points.length > 4)
-              tool.points.shift()
+            tool.points.shift()
           }
       }
     }
