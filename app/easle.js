@@ -69,7 +69,7 @@ class Easle {
 
             ipoints.forEach(({x, y}) => tool.drawCircle({canvas, color, x, y, radius }))
 
-            if (tool.points.length > 4)
+            //if (tool.points.length > 4)
               tool.points.shift()
           }
       }

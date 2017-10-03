@@ -287,7 +287,8 @@ var Easle = function () {
               return tool.drawCircle({ canvas: canvas, color: color, x: x, y: y, radius: radius });
             });
 
-            if (tool.points.length > 4) tool.points.shift();
+            //if (tool.points.length > 4)
+            tool.points.shift();
           }
       }
     }
@@ -326,28 +327,60 @@ var interpolate = exports.interpolate = function interpolate(_ref) {
 
   return Math.floor(numerator / denominator);
 };
+var interpolateX = function interpolateX(_ref2) {
+  var x0 = _ref2.x0,
+      y0 = _ref2.y0,
+      x1 = _ref2.x1,
+      y1 = _ref2.y1,
+      y = _ref2.y;
 
-var interpolateBetweenPoints = exports.interpolateBetweenPoints = function interpolateBetweenPoints(_ref2, _ref3) {
-  var x0 = _ref2.x,
-      y0 = _ref2.y;
-  var x1 = _ref3.x,
-      y1 = _ref3.y;
+  var numerator = (y - y0) * (x1 - x0);
+  var denominator = y1 - y0;
+
+  return Math.floor(numerator / denominator) + x0;
+};
+
+var interpolateBetweenPoints = exports.interpolateBetweenPoints = function interpolateBetweenPoints(_ref3, _ref4) {
+  var x0 = _ref3.x,
+      y0 = _ref3.y;
+  var x1 = _ref4.x,
+      y1 = _ref4.y;
 
   var points = [];
 
-  if (x0 > x1) {
-    ;
+  var dx = Math.abs(x0 - x1),
+      dy = Math.abs(y0 - y1);
 
-    var _ref4 = [x1, y1, x0, y0];
-    x0 = _ref4[0];
-    y0 = _ref4[1];
-    x1 = _ref4[2];
-    y1 = _ref4[3];
-  }var x = x0;
+  if (dx > dy) {
+    if (x0 > x1) {
+      ;
 
-  while (x < x1) {
-    x++;
-    points.push({ x: x, y: interpolate({ x0: x0, y0: y0, x1: x1, y1: y1, x: x }) });
+      var _ref5 = [x1, y1, x0, y0];
+      x0 = _ref5[0];
+      y0 = _ref5[1];
+      x1 = _ref5[2];
+      y1 = _ref5[3];
+    }var x = x0;
+
+    while (x < x1) {
+      x++;
+      points.push({ x: x, y: interpolate({ x0: x0, y0: y0, x1: x1, y1: y1, x: x }) });
+    }
+  } else {
+    if (y0 > y1) {
+      ;
+
+      var _ref6 = [x1, y1, x0, y0];
+      x0 = _ref6[0];
+      y0 = _ref6[1];
+      x1 = _ref6[2];
+      y1 = _ref6[3];
+    }var y = y0;
+
+    while (y < y1) {
+      y++;
+      points.push({ y: y, x: interpolateX({ x0: x0, y0: y0, x1: x1, y1: y1, y: y }) });
+    }
   }
 
   return points;
