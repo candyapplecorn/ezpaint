@@ -4,14 +4,16 @@ export default {
     points: [],
     circle: ({ canvas, color, x, y, radius }) => {
       const context = canvas.getContext('2d');
+      const { offsetTop } = canvas
 
       context.beginPath();
-      context.arc(x - radius, y - radius, radius, 0, 2 * Math.PI, false);
+      context.arc(x - radius, y - offsetTop, radius, 0, 2 * Math.PI, false);
       context.fillStyle = color;
       context.fill();
     },
     square: ({ canvas, color, x, y, radius }) => {
       const context = canvas.getContext('2d');
+      const { offsetTop } = canvas
 
       context.fillStyle = color;
       context.fillRect(x - radius, y - radius, radius + radius, radius + radius)

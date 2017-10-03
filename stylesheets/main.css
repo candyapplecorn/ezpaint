@@ -11,13 +11,26 @@ body * {
 canvas:hover {
 	cursor: crosshair;
 }
-#bottom-gui-container {
+.brush-type {
+	background: white;
+	margin: 0.25em;
+}
+#brush-types {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+#top-gui {
+	width: 100%;
+}
+
+#bottom-gui-container, #top-gui-container {
 	display: flex;
 	justify-content: center;
 	background: black;
 }
 
-#bottom-gui {
+#bottom-gui, #top-gui {
 	display: flex;
 	justify-content: center;
 }
