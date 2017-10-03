@@ -1,4 +1,4 @@
-class ColorPicker {
+class SelectableList {
 				constructor(container, className, initSelect){
 								this.container = container
 								this.configureContainer(container)
@@ -18,10 +18,12 @@ class ColorPicker {
 				}
 				handleClick(e){
 								e.stopPropagation();
-								const { target } = e;
-								if (!target.classList.contains(this.className))
-									return;
+								let { target, target: { parentElement } } = e;
 
+								if (parentElement.classList.contains(this.className))
+									target = parentElement
+								else if (!target.classList.contains(this.className))
+									return;
 
 								this.removeSelected()
 								this.setSelected(target.getAttribute('id'))
@@ -46,4 +48,4 @@ class ColorPicker {
 				}
 }
 
-export default ColorPicker;
+export default SelectableList;

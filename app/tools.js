@@ -1,6 +1,6 @@
 export default {
-  paintbrush: {
-    type: "paintbrush",
+  // paintbrush: {
+    // type: "paintbrush",
     points: [],
     circle: ({ canvas, color, x, y, radius }) => {
       const context = canvas.getContext('2d');
@@ -18,5 +18,5 @@ export default {
       context.fillStyle = color;
       context.fillRect(x - radius, y - radius, radius + radius, radius + radius)
     }
-  }
+  // }
 };

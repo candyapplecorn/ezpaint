@@ -12,11 +12,13 @@ class Easle {
 
       this.configureContainer(canvas)
 
-      toolPicker.subscribers.push(tp => (this.toolType = tp.toolType))
+      toolPicker.subscribers.push(tp => (this.toolType = tp.value))
+      this.toolType = toolPicker.value
       colorPicker.subscribers.push(cp => (this.color = cp.value))
       this.color = colorPicker.value
+
       this.radius = 10;
-      this.tool = TOOLS.paintbrush
+      this.tool = TOOLS//.paintbrush
       this.mouse = MOUSE
       this.brushType = "circle"
     }
@@ -44,11 +46,11 @@ class Easle {
 
     handleMouseMove(e){
       const { clientX: x, clientY: y } = e
-      const { canvas, color, tool, radius, brushType } = this
+      const { canvas, color, tool, radius, brushType, toolType } = this
       tool.points.push({x, y})
 
-      switch (tool.type){
-        case "paintbrush":
+      switch (toolType){
+        case "circle":
           if (tool.points.length < 2)
             tool[brushType]({ canvas, color, x, y, radius })
           else {
