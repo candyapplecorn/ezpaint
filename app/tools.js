@@ -103,15 +103,4 @@ export default {
       ctx.fillStyle = color;
       ctx.fill();
     }
-
-    // drawStar(100,100,5,30,15);
 };
-
-// const coordToColor = ({ imageData, x, y }) => {
-//   return [
-//     imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 0],
-//     imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 1],
-//     imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 2],
-//     imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 3]
-//   ]
-// };

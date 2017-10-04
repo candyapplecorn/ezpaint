@@ -1,5 +1,6 @@
 body * {
 	box-sizing: border-box;
+	font-family: 'Permanent Marker', cursive;
 }
 #container {
 	width: 100%;
@@ -36,7 +37,6 @@ canvas:hover { cursor: crosshair; }
 #brush-types {
 	display: flex;
 	justify-content: center;
-	width: 100%;
 }
 #top-gui {
 	width: 100%;
@@ -47,6 +47,45 @@ canvas:hover { cursor: crosshair; }
 	display: flex;
 	justify-content: center;
 	background: black;
+}
+#size-container {
+	margin-left: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	box-sizing: border-box;
+	font-size: 1.25em;
+	border-radius: 1em;
+}
+#size {
+	background: white;
+	display: flex;
+	align-items: center;
+	background: transparent;
+}
+
+#size-labels {
+	display: flex;
+	justify-content: center;
+	border-bottom: 5px solid black;
+	padding: 0;
+}
+
+#size-labels p {
+	margin: 0;
+}
+
+#small {
+	border: 0.5em solid black;
+	border-radius: 50%;
+	height: 0;
+	width: 0;
+}
+#large {
+	border: 1em solid black;
+	border-radius: 50%;
+	height: 0;
+	width: 0;
 }
 
 #bottom-gui, #top-gui {

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Document</title>
 	<link rel="stylesheet" href="stylesheets/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 </head>
 <body>
   <script src="build/bundle.js"></script>
@@ -18,6 +19,16 @@
                 <div class="brush-type" id="square"><div class="brush" id="square-img"></div></div>
                 <div class="brush-type" id="bucket"><img class="brush" src="assets/paintbucket.svg"></img></div>
                 <div class="brush-type" id="spray"><img class="brush" src="assets/spray.svg"></img></div>
+              </div>
+              <div id="size-container">
+                <div id="size-labels">
+                  <p>Brush Size</p>
+                </div>
+                <div id="size">
+                  <div id="small"></div>
+                  <input type="range" min="10" max="50" step="10" />
+                  <div id="large"></div>
+                </div>
               </div>
             </div>
           </div>
