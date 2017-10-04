@@ -6,7 +6,7 @@ const MOUSE = {
 };
 
 class Easle {
-    constructor({ canvas, colorPicker, toolPicker }){
+    constructor({ canvas, colorPicker, toolPicker, slider }){
       this.canvas = canvas;
       this.resize();
 
@@ -16,8 +16,9 @@ class Easle {
       this.toolType = toolPicker.value
       colorPicker.subscribers.push(cp => (this.color = cp.value))
       this.color = colorPicker.value
-
-      this.radius = 10;
+      slider.subscribers.push(sl => (this.radius = Number(sl.value)))
+      this.radius = slider.value;
+      
       this.tool = TOOLS//.paintbrush
       this.mouse = MOUSE
       this.brushType = "circle"
