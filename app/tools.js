@@ -18,6 +18,18 @@ export default {
       context.fillStyle = color;
       context.fillRect(x - radius - radius, y - offsetTop - radius, radius + radius, radius + radius)
     },
+    spray: ({ canvas, color, x, y, radius }) => {
+      const context = canvas.getContext('2d');
+      const { offsetTop } = canvas
+      radius *= 1.5;
+      context.fillStyle = color;
+
+      for (let i = 0, rx, ry; i < 10; i++){
+        rx = Math.floor(Math.random() * radius - radius / 2)
+        ry = Math.floor(Math.random() * radius - radius / 2)
+        context.fillRect(x - radius + rx, y - offsetTop + ry, 2, 2);
+      }
+    },
     bucket: ({ canvas, color, x, y }) => {
       const context = canvas.getContext('2d')
       let imageData = context.getImageData(0, 0, canvas.width, canvas.height)
@@ -30,7 +42,11 @@ export default {
 
       color = context.getImageData(x, y, 1, 1).data; // overwrite "red" with [255, 0, 0, ?]
 
-      const offsets = [[1, 0], [0, 1], [0, -1], [-1, 0]];
+      const offsets = [
+        [1, 0], [0, 1], [0, -1], [-1, 0],  // cardinal
+        [1, 1], [1, -1], [-1, 1], [-1, -1] // diagonal
+      ];
+
       let curr = {x, y}, temp = {}, currColor;
       const queue = [curr];
 
@@ -45,7 +61,7 @@ export default {
           // color = the color we want to overwrite with
           // currColor = the color we are looking at
 
-          if (sameArray(currColor, data)){// && !sameArray(color, currColor)){
+          if (sameArray(currColor, data)){
             queue.push(Object.assign({}, temp))
             context.fillRect(temp.x, temp.y, 1, 1)
           }
