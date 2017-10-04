@@ -66,6 +66,9 @@ class Easle {
 
             tool.points.shift()
           }
+          break;
+        case "bucket":
+          tool.bucket({canvas, color, x: e.layerX, y: e.layerY})
       }
     }
 

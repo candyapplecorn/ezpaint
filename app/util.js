@@ -39,3 +39,8 @@ export const interpolateBetweenPoints = ({x: x0, y: y0}, {x: x1, y: y1}) => {
 
     return points;
 };
+export const sameArray = (a, a2) => (a.reduce((a, c, i) => {
+  if (!a) return a;
+  if (c != a2[i]) return false;
+  return a;
+}, true) && a.length == a2.length)
