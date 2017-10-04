@@ -52,8 +52,11 @@ class Easle {
       switch (toolType){
         case "square":
         case "circle":
+        case "star":
           if (tool.points.length < 2)
-            tool[toolType]({ canvas, color, x, y, radius })
+            tool[toolType]({ canvas, color, x, y,
+                      radius, spikes: 5,
+                      outerRadius: radius * 2, innerRadius: radius })
           else {
             const ipoints = [];
 
@@ -62,7 +65,8 @@ class Easle {
               ... interpolateBetweenPoints(tool.points[i], p)
             )})
 
-            ipoints.forEach(({x, y}) => tool[toolType]({canvas, color, x, y, radius }))
+            ipoints.forEach(({x, y}) => tool[toolType]({ canvas, color, x, y,
+                      radius, spikes: 5, outerRadius: radius * 2, innerRadius: radius }))
 
             tool.points.shift()
           }
@@ -71,7 +75,7 @@ class Easle {
           tool.bucket({ canvas, color, x: e.layerX, y: e.layerY });
           break;
         case "spray":
-          tool.spray({ canvas, color, x, y, radius});
+          tool.spray({ canvas, color, x, y, radius });
           break;
       }
     }
