@@ -1,8 +1,6 @@
 import { sameArray } from './util'
 
 export default {
-  // paintbrush: {
-    // type: "paintbrush",
     points: [],
     circle: ({ canvas, color, x, y, radius }) => {
       const context = canvas.getContext('2d');
@@ -22,21 +20,20 @@ export default {
     },
     bucket: ({ canvas, color, x, y }) => {
       const context = canvas.getContext('2d')
+      let imageData = context.getImageData(0, 0, canvas.width, canvas.height)
 
       const { data } = context.getImageData(x, y, 1, 1)
-      const [r, g, b, a] = data
+      if (sameArray(data, [0, 0, 0, 0])) return;
 
       context.fillStyle = color;
       context.fillRect(x, y, 1, 1)
 
       color = context.getImageData(x, y, 1, 1).data; // overwrite "red" with [255, 0, 0, ?]
-      //context.fillStyle = `rgb(${a}, ${g}, ${b}, ${a})`;
 
       const offsets = [[1, 0], [0, 1], [0, -1], [-1, 0]];
       let curr = {x, y}, temp = {}, currColor;
       const queue = [curr];
 
-      // debugger
       while (queue.length){
         curr = queue.shift()
 
@@ -48,7 +45,7 @@ export default {
           // color = the color we want to overwrite with
           // currColor = the color we are looking at
 
-          if (sameArray(currColor, data) && !sameArray(color, currColor)){
+          if (sameArray(currColor, data)){// && !sameArray(color, currColor)){
             queue.push(Object.assign({}, temp))
             context.fillRect(temp.x, temp.y, 1, 1)
           }
@@ -56,3 +53,12 @@ export default {
       }
     }
 };
+
+// const coordToColor = ({ imageData, x, y }) => {
+//   return [
+//     imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 0],
+//     imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 1],
+//     imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 2],
+//     imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 3]
+//   ]
+// };

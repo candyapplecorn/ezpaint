@@ -20,7 +20,11 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
-      }
+      }/*,
+			{
+				test: /worker\.js$/,
+				loader: 'worker-loader'
+			}*/
     ]
   },
   devtool: 'source-maps'
