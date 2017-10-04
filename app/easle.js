@@ -50,9 +50,10 @@ class Easle {
       tool.points.push({x, y})
 
       switch (toolType){
+        case "square":
         case "circle":
           if (tool.points.length < 2)
-            tool[brushType]({ canvas, color, x, y, radius })
+            tool[toolType]({ canvas, color, x, y, radius })
           else {
             const ipoints = [];
 
@@ -61,7 +62,7 @@ class Easle {
               ... interpolateBetweenPoints(tool.points[i], p)
             )})
 
-            ipoints.forEach(({x, y}) => tool[brushType]({canvas, color, x, y, radius }))
+            ipoints.forEach(({x, y}) => tool[toolType]({canvas, color, x, y, radius }))
 
             tool.points.shift()
           }

@@ -16,7 +16,7 @@ export default {
       const { offsetTop } = canvas
 
       context.fillStyle = color;
-      context.fillRect(x - radius, y - radius, radius + radius, radius + radius)
+      context.fillRect(x - radius - radius, y - offsetTop - radius, radius + radius, radius + radius)
     }
   // }
 };
