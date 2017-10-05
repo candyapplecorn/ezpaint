@@ -69,9 +69,6 @@ export default {
       }
     },
     star: function ({ canvas, color, x: cx, y: cy, spikes, outerRadius, innerRadius }){
-      // const { offsetTop, offsetLeft } = canvas
-      // cy -= offsetTop;
-      // cx -= offsetLeft;
     /*
     Code for drawing a star taken from:
     https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5
