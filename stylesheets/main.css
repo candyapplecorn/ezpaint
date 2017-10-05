@@ -1,13 +1,20 @@
 body * {
 	box-sizing: border-box;
 	font-family: 'Permanent Marker', cursive;
+	margin-left: 0
+	margin-right: 0;
 }
 #container {
 	width: 100%;
 }
 #canvas {
-	border: 1px solid black;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	height: 100%;
 	width: 100%;
+	z-index: 3;
 }
 canvas:hover { cursor: crosshair; }
 #circle-img{
@@ -25,7 +32,7 @@ canvas:hover { cursor: crosshair; }
 	margin: 0.25em;
 	padding: 0.5em;
 	border-radius: 1em;
-	border: 5px solid black;
+	border: 5px solid white;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -40,14 +47,27 @@ canvas:hover { cursor: crosshair; }
 }
 #top-gui {
 	width: 100%;
-	background: white;
 }
 
 #bottom-gui-container, #top-gui-container {
+	position: absolute;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	background: black;
+	z-index: 5;
+	left: 0;
 }
+#bottom-gui-container {
+	bottom: 0;
+	background: #bd957f;
+	padding: 0.5em;
+}
+#top-gui-container {
+	background: #7fa7bd;
+	top: 0;
+	padding: 0.5em;
+ }
 #size-container {
 	margin-left: 1em;
 	display: flex;
@@ -58,7 +78,7 @@ canvas:hover { cursor: crosshair; }
 	border-radius: 1em;
 }
 #size {
-	background: white;
+	/*background: white;*/
 	display: flex;
 	align-items: center;
 	background: transparent;
@@ -100,8 +120,14 @@ canvas:hover { cursor: crosshair; }
 	border-radius: 50%;
 }
 
-.selected, .gui-color:hover {
+#bottom-gui .selected, .gui-color:hover {
 	border: 5px solid white;
+}
+#top-gui .selected, #top-gui .selected:hover {
+	border: 5px solid black;
+}
+#white.selected, #white:hover {
+	border: 5px solid black;
 }
 
 #red {

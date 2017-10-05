@@ -4,30 +4,30 @@ export default {
     points: [],
     circle: ({ canvas, color, x, y, radius }) => {
       const context = canvas.getContext('2d');
-      const { offsetTop } = canvas
+      // const { offsetTop } = canvas
 
       context.beginPath();
-      context.arc(x - radius, y - offsetTop, radius, 0, 2 * Math.PI, false);
+      context.arc(x - radius, y/* - offsetTop*/, radius, 0, 2 * Math.PI, false);
       context.fillStyle = color;
       context.fill();
     },
     square: ({ canvas, color, x, y, radius }) => {
       const context = canvas.getContext('2d');
-      const { offsetTop } = canvas
+      // const { offsetTop } = canvas
 
       context.fillStyle = color;
-      context.fillRect(x - radius - radius, y - offsetTop - radius, radius + radius, radius + radius)
+      context.fillRect(x - radius, y/* - offsetTop*/ - radius, radius + radius, radius + radius)
     },
     spray: ({ canvas, color, x, y, radius }) => {
       const context = canvas.getContext('2d');
-      const { offsetTop } = canvas
+      // const { offsetTop } = canvas
       radius *= 1.5;
       context.fillStyle = color;
 
       for (let i = 0, rx, ry; i < 10; i++){
         rx = Math.floor(Math.random() * radius - radius / 2)
         ry = Math.floor(Math.random() * radius - radius / 2)
-        context.fillRect(x - radius + rx, y - offsetTop + ry, 2, 2);
+        context.fillRect(x - radius + rx, y /*- offsetTop*/ + ry, 2, 2);
       }
     },
     bucket: ({ canvas, color, x, y }) => {
@@ -69,9 +69,9 @@ export default {
       }
     },
     star: function ({ canvas, color, x: cx, y: cy, spikes, outerRadius, innerRadius }){
-      const { offsetTop, offsetLeft } = canvas
-      cy -= offsetTop;
-      cx -= offsetLeft;
+      // const { offsetTop, offsetLeft } = canvas
+      // cy -= offsetTop;
+      // cx -= offsetLeft;
     /*
     Code for drawing a star taken from:
     https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5

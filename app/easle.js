@@ -17,8 +17,8 @@ class Easle {
       colorPicker.subscribers.push(cp => (this.color = cp.value))
       this.color = colorPicker.value
       slider.subscribers.push(sl => (this.radius = Number(sl.value)))
-      this.radius = slider.value;
-      
+      this.radius = Number(slider.value);
+
       this.tool = TOOLS//.paintbrush
       this.mouse = MOUSE
       this.brushType = "circle"
@@ -46,7 +46,8 @@ class Easle {
     }
 
     handleMouseMove(e){
-      const { clientX: x, clientY: y } = e
+      const { layerX: x, layerY: y } = e
+      // debugger
       const { canvas, color, tool, radius, brushType, toolType } = this
       tool.points.push({x, y})
 
@@ -89,8 +90,10 @@ class Easle {
     }
 
     resize(){
+      // this.canvas.width = this.canvas.clientWidth;
+      // this.canvas.height = window.innerHeight * 3 / 5;
       this.canvas.width = this.canvas.clientWidth;
-      this.canvas.height = window.innerHeight * 3 / 5;
+      this.canvas.height = window.innerHeight;
     }
 }
 
