@@ -44,3 +44,18 @@ export const sameArray = (a, a2) => (a.reduce((a, c, i) => {
   if (c != a2[i]) return false;
   return a;
 }, true) && a.length == a2.length)
+
+// Given a coordinate, retrieves the RGBA array at it
+export const coordToColor = ({ imageData, x, y }) => {
+  return [
+    imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 0],
+    imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 1],
+    imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 2],
+    imageData.data[((y * (imageData.width * 4)) + (x * 4)) + 3]
+  ]
+};
+
+// Given a coordinate, sets the imageData @ that to COLOR
+export const setCoordToColor = ({ imageData, x, y, color }) =>
+    color.forEach((_, i) =>
+      imageData.data[((y * (imageData.width * 4)) + (x * 4)) + i] = color[i])

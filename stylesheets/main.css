@@ -120,37 +120,16 @@ canvas:hover { cursor: crosshair; }
 	border-radius: 50%;
 }
 
-#bottom-gui .selected, .gui-color:hover {
-	border: 5px solid white;
-}
-#top-gui .selected, #top-gui .selected:hover {
-	border: 5px solid black;
-}
-#white.selected, #white:hover {
-	border: 5px solid black;
-}
+#bottom-gui .selected, .gui-color:hover { border: 5px solid white; }
+#top-gui .selected, #top-gui .selected:hover { border: 5px solid black; }
 
-#red {
-	background: red
-}
-#blue {
-	background: blue
-}
-#white {
-	background: white
-}
-#black {
-	background: black
-}
-#yellow {
-	background: yellow
-}
-#green {
-	background: green
-}
-#orange {
-	background: orange
-}
-#purple {
-	background: purple
-}
+#white.selected, #white:hover { border: 5px solid black; }
+
+#red { background: red }
+#blue { background: blue }
+#white { background: white }
+#black { background: black }
+#yellow { background: yellow }
+#green { background: green }
+#orange { background: orange }
+#purple { background: purple }

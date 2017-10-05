@@ -1,4 +1,5 @@
-import { sameArray } from './util'
+import { sameArray, coordToColor, setCoordToColor } from './util'
+import CoordinateHash from './coordinate_hash';
 
 export default {
     points: [],
@@ -30,7 +31,7 @@ export default {
         context.fillRect(x - radius + rx, y /*- offsetTop*/ + ry, 2, 2);
       }
     },
-    bucket: ({ canvas, color, x, y }) => {
+    bucketPix: ({ canvas, color, x, y }) => {
       const context = canvas.getContext('2d')
       let imageData = context.getImageData(0, 0, canvas.width, canvas.height)
 
@@ -48,14 +49,20 @@ export default {
       ];
 
       let curr = {x, y}, temp = {}, currColor;
+      const chash = new CoordinateHash()
       const queue = [curr];
 
       while (queue.length){
         curr = queue.shift()
 
+        if (chash.get(curr))
+          continue;
+
+        chash.set(curr)
+
         offsets.forEach(os => {
           [temp.x, temp.y] = [curr.x + os[0], curr.y + os[1]]
-          currColor = context.getImageData(temp.x, temp.y, 1, 1).data
+          currColor = coordToColor({ x: temp.x, y: temp.y, imageData }); // [r, g, b, a]
 
           // data = the color we want to overwrite
           // color = the color we want to overwrite with
@@ -63,10 +70,13 @@ export default {
 
           if (sameArray(currColor, data)){
             queue.push(Object.assign({}, temp))
-            context.fillRect(temp.x, temp.y, 1, 1)
+            // context.fillRect(temp.x, temp.y, 1, 1)
+            setCoordToColor({ imageData, x: temp.x, y: temp.y, color })
           }
         })
       }
+
+      context.putImageData(imageData, 0, 0)
     },
     star: function ({ canvas, color, x: cx, y: cy, spikes, outerRadius, innerRadius }){
     /*

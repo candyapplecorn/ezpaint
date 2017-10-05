@@ -74,7 +74,7 @@ class Easle {
           }
           break;
         case "bucket":
-          tool.bucket({ canvas, color, x: e.layerX, y: e.layerY });
+          tool.bucketPix({ canvas, color, x: e.layerX, y: e.layerY });
           break;
         case "spray":
           tool.spray({ canvas, color, x, y, radius });
