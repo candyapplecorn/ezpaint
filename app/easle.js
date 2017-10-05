@@ -94,6 +94,7 @@ class Easle {
       // this.canvas.height = window.innerHeight * 3 / 5;
       this.canvas.width = this.canvas.clientWidth;
       this.canvas.height = window.innerHeight;
+      this.clear()
     }
 }
 
