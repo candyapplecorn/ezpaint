@@ -1,5 +1,7 @@
 import { sameArray, coordToColor, setCoordToColor } from './util'
+// import CantorPairingHash from './coordinate_hash';
 import CoordinateHash from './coordinate_hash';
+// import ToStringHash from './coordinate_hash';
 
 export default {
     points: [],
@@ -50,6 +52,8 @@ export default {
 
       let curr = {x, y}, temp = {}, currColor;
       const chash = new CoordinateHash()
+      // const chash = new CantorPairingHash()
+      // const chash = new ToStringHash()
       const queue = [curr];
 
       while (queue.length){
@@ -70,7 +74,6 @@ export default {
 
           if (sameArray(currColor, data)){
             queue.push(Object.assign({}, temp))
-            // context.fillRect(temp.x, temp.y, 1, 1)
             setCoordToColor({ imageData, x: temp.x, y: temp.y, color })
           }
         })
