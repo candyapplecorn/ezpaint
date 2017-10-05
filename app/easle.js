@@ -1,4 +1,4 @@
-import { interpolateBetweenPoints } from './util';
+import { interpolateBetweenPoints, toggleCursor } from './util';
 import TOOLS from './tools';
 
 const MOUSE = {
@@ -37,7 +37,7 @@ class Easle {
         })
       )
 
-      window.addEventListener('resize', this.resize)
+      window.addEventListener('resize', this.resize.bind(this))
 
       canvas.addEventListener('mousemove', e => {
         if (this.mouse.isDown)
@@ -74,7 +74,9 @@ class Easle {
           }
           break;
         case "bucket":
-          tool.bucketPix({ canvas, color, x: e.layerX, y: e.layerY });
+          toggleCursor('WAIT');
+          window.setTimeout(() =>
+            tool.bucketPix({ canvas, color, x: e.layerX, y: e.layerY }), 25);
           break;
         case "spray":
           tool.spray({ canvas, color, x, y, radius });

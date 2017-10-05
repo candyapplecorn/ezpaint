@@ -120,8 +120,14 @@ canvas:hover { cursor: crosshair; }
 	border-radius: 50%;
 }
 
-#bottom-gui .selected, .gui-color:hover { border: 5px solid white; }
-#top-gui .selected, #top-gui .selected:hover { border: 5px solid black; }
+#bottom-gui .selected, .gui-color:hover {
+	border: 5px solid white;
+	cursor: pointer;
+}
+#top-gui .selected, .brush-type:hover {
+	border: 5px solid black;
+	cursor: pointer;
+}
 
 #white.selected, #white:hover { border: 5px solid black; }
 

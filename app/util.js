@@ -59,3 +59,11 @@ export const coordToColor = ({ imageData, x, y }) => {
 export const setCoordToColor = ({ imageData, x, y, color }) =>
     color.forEach((_, i) =>
       imageData.data[((y * (imageData.width * 4)) + (x * 4)) + i] = color[i])
+
+export const toggleCursor = action => {
+  const { body } = document;
+  const canvas = document.getElementById('canvas');
+
+  body.style.cursor    = action == "WAIT" ? "wait" : "";
+  canvas.style.cursor  = action == "WAIT" ? "wait" : "";
+};
