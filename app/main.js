@@ -3,6 +3,7 @@ import SelectableList from './selectable_list';
 import Easle from './easle';
 import splash from './splash'
 import ClearOverlay from './clear';
+import DownloadOverlay from './download';
 
 document.addEventListener('DOMContentLoaded', e => {
 				const bottomGUI  = document.getElementById('bottom-gui');
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', e => {
 				// Add event listeners to splash screen so it may be closed.
 				splash();
 				new ClearOverlay(easle.clear.bind(easle))
+				new DownloadOverlay()
 
 				window.ColorPicker = colorPicker
 				window.Easle = easle

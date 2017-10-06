@@ -218,6 +218,10 @@ var _clear = __webpack_require__(8);
 
 var _clear2 = _interopRequireDefault(_clear);
 
+var _download = __webpack_require__(9);
+
+var _download2 = _interopRequireDefault(_download);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function (e) {
@@ -239,6 +243,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 				// Add event listeners to splash screen so it may be closed.
 				(0, _splash2.default)();
 				new _clear2.default(easle.clear.bind(easle));
+				new _download2.default();
 
 				window.ColorPicker = colorPicker;
 				window.Easle = easle;
@@ -937,6 +942,57 @@ var ClearOverlay = function () {
 }();
 
 exports.default = ClearOverlay;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DownloadOverlay = function () {
+  function DownloadOverlay() {
+    _classCallCheck(this, DownloadOverlay);
+
+    this.canvas = document.querySelector('canvas');
+    this.button = document.querySelector('#file-options div:nth-child(1)');
+    this.configureContainer();
+  }
+
+  _createClass(DownloadOverlay, [{
+    key: 'configureContainer',
+    value: function configureContainer() {
+      var button = this.button,
+          download = this.download;
+
+      button.addEventListener('click', download.bind(this), false);
+    }
+  }, {
+    key: 'download',
+    value: function download() {
+      var canvas = this.canvas;
+
+      var url = canvas.toDataURL('img/jpeg'),
+          d = new Date();
+
+      canvas.setAttribute('download', d.toLocaleDateString() + d.toLocaleTimeString().replace(/ PM/, "") + '.jpg');
+
+      window.location = url;
+    }
+  }]);
+
+  return DownloadOverlay;
+}();
+
+exports.default = DownloadOverlay;
 
 /***/ })
 /******/ ]);
