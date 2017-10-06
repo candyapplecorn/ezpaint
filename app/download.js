@@ -12,17 +12,20 @@ class DownloadOverlay {
 
   download(){
     const { canvas } = this;
-    const url = canvas.toDataURL('img/jpeg'), d = new Date();
+    const url = canvas.toDataURL(), d = new Date()
 
-    // canvas.setAttribute(
-    //   'download',
-    //   d.toLocaleDateString() +
-    //   d.toLocaleTimeString().replace(/ PM/, "") +
-    //   '.jpg'
-    // )
-
-    window.location = url;
+    const link = document.createElement('a');
+    link.download = "ezpaint_";
+    link.download += d.toLocaleDateString() +
+                     d.toLocaleTimeString().replace(/ /, '') +
+                     ".png";
+    link.href = url;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }
+
+
 
 export default DownloadOverlay;

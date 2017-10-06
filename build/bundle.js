@@ -980,17 +980,16 @@ var DownloadOverlay = function () {
     value: function download() {
       var canvas = this.canvas;
 
-      var url = canvas.toDataURL('img/jpeg'),
+      var url = canvas.toDataURL(),
           d = new Date();
 
-      // canvas.setAttribute(
-      //   'download',
-      //   d.toLocaleDateString() +
-      //   d.toLocaleTimeString().replace(/ PM/, "") +
-      //   '.jpg'
-      // )
-
-      window.location = url;
+      var link = document.createElement('a');
+      link.download = "ezpaint_";
+      link.download += d.toLocaleDateString() + d.toLocaleTimeString().replace(/ /, '') + ".png";
+      link.href = url;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   }]);
 
