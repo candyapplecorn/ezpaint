@@ -67,9 +67,9 @@ class Easle {
       /* Touch support! */
       const { touches } = e
       if (touches)
-        if (touches && touches.length == 1)
+        if (touches.length == 1)
           x = touches[0].clientX, y = touches[0].clientY;
-        else if (touches && touches.length > 1) {
+        else if (touches.length > 1) {
           touches.forEach(t => this.handleMouseMove({
             x: t.clientX, y: t.clientY
           }));

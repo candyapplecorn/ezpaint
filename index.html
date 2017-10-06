@@ -55,7 +55,15 @@
           </div>
           <div id="size">
             <div id="small"></div>
-            <input type="range" min="10" max="50" step="10" value="10" />
+            <input type="range" min="10" max="50" step="10"
+                   value="10" list="tickmarks">
+            <datalist id="tickmarks">
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+              <option>40</option>
+              <option>50</option>
+            </datalist>
             <div id="large"></div>
           </div>
         </div>

@@ -490,7 +490,7 @@ var Easle = function () {
 
       var touches = e.touches;
 
-      if (touches) if (touches && touches.length == 1) x = touches[0].clientX, y = touches[0].clientY;else if (touches && touches.length > 1) {
+      if (touches) if (touches.length == 1) x = touches[0].clientX, y = touches[0].clientY;else if (touches.length > 1) {
         touches.forEach(function (t) {
           return _this3.handleMouseMove({
             x: t.clientX, y: t.clientY
