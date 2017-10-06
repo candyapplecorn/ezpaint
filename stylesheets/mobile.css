@@ -5,10 +5,24 @@
   #top-gui, #bottom-gui {
     font-size: 1.5em;
   }
+  .brush-type div, .brush-type img {
+    width: 2em;
+    height: 2em;
+  }
+  #clear-prompt-modal div div {
+    font-size: 5em;
+  }
+  #clear-prompt-modal h1 {
+    font-size: 7em;
+  }
 }
 
 @media all and (min-width: 415px) and (max-width: 700px) {
   #top-gui, #bottom-gui {
     font-size: 0.75em;
+  }
+  .brush-type div, .brush-type img {
+    width: 2em;
+    height: 2em;
   }
 }

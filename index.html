@@ -11,6 +11,15 @@
   <script src="build/bundle.js"></script>
 
 	<main id="container">
+    <div id="clear-prompt-modal">
+      <h1>Reset image?</h1>
+
+      <div>
+        <div id="clear-prompt-delete">YES</div>
+        <div id="clear-prompt-cancel"> NO</div>
+      </div>
+    </div>
+
     <div id="splash-modal">
       <div id="splash">
         <h3><em>Welcome to</em></h3>
@@ -48,6 +57,15 @@
             <div id="small"></div>
             <input type="range" min="10" max="50" step="10" value="10" />
             <div id="large"></div>
+          </div>
+        </div>
+
+        <div id="file-options">
+          <div class="brush-type">
+            <img src="assets/download.png" class="brush"></img>
+          </div>
+          <div class="brush-type">
+            <img src="assets/trash.png" class="brush"></img>
           </div>
         </div>
       </div>

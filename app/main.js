@@ -2,6 +2,7 @@ import SubscribableSlider from './subscribable_slider';
 import SelectableList from './selectable_list';
 import Easle from './easle';
 import splash from './splash'
+import ClearOverlay from './clear';
 
 document.addEventListener('DOMContentLoaded', e => {
 				const bottomGUI  = document.getElementById('bottom-gui');
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
 				// Add event listeners to splash screen so it may be closed.
 				splash();
+				new ClearOverlay(easle.clear.bind(easle))
 
 				window.ColorPicker = colorPicker
 				window.Easle = easle
