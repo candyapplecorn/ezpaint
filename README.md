@@ -18,6 +18,7 @@ Here is the project [proposal](PROPOSAL.md).
   * [Webpack 3](https://webpack.github.io/)
     * [Babel](https://github.com/babel/babel-loader)
 * [FFMPEG](https://www.ffmpeg.org/) & [SimpleScreenRecorder](http://www.maartenbaert.be/simplescreenrecorder/)
+  * Used to make snazzy gifs on my [Linux-running Chromebook](https://galliumos.org/)
 
 ## Features
 
