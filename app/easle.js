@@ -29,12 +29,24 @@ class Easle {
         canvas.addEventListener(ev, e => {
           this.mouse.isDown = true;
           this.handleMouseMove(e);
+
+          if (this.interval == undefined)
+            this.interval = window.setInterval(
+              this.tool.spray.bind(this, {
+                canvas: this.canvas, color: this.color,
+                x: e.layerX, y: e.layerY, radius: this.radius
+              }),
+              200
+            );
         }));
 
       ['mouseup', 'mouseleave', 'blur', 'touchend'].forEach(ev =>
         document.addEventListener(ev, _ => {
           this.mouse.isDown = false;
           this.tool.points = [];
+
+           this.interval && window.clearInterval(this.interval)
+           delete this.interval
         }));
 
       window.addEventListener('resize', this.resize.bind(this));
@@ -43,13 +55,17 @@ class Easle {
         canvas.addEventListener(ev, e => {
           if (this.mouse.isDown)
             this.handleMouseMove(e)
+
+          this.interval && window.clearInterval(this.interval)
+          delete this.interval
         }));
     }
 
     handleMouseMove(e){
       const { layerX: x, layerY: y } = e
-      // debugger
-      const { canvas, color, tool, radius, brushType, toolType } = this
+      const {
+        canvas, color, tool, radius, brushType, toolType
+      } = this;
       tool.points.push({x, y})
 
       switch (toolType){
@@ -81,6 +97,11 @@ class Easle {
           break;
         case "spray":
           tool.spray({ canvas, color, x, y, radius });
+          // if (!this.interval)
+          //   this.interval = window.setInterval(
+          //     tool.spray.bind(this ,{ canvas, color, x, y, radius }),
+          //     200
+          //   );
           break;
       }
     }
@@ -93,8 +114,6 @@ class Easle {
     }
 
     resize(){
-      // this.canvas.width = this.canvas.clientWidth;
-      // this.canvas.height = window.innerHeight * 3 / 5;
       this.canvas.width = this.canvas.clientWidth;
       this.canvas.height = window.innerHeight;
       this.clear()

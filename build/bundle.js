@@ -449,6 +449,11 @@ var Easle = function () {
         return canvas.addEventListener(ev, function (e) {
           _this2.mouse.isDown = true;
           _this2.handleMouseMove(e);
+
+          if (_this2.interval == undefined) _this2.interval = window.setInterval(_this2.tool.spray.bind(_this2, {
+            canvas: _this2.canvas, color: _this2.color,
+            x: e.layerX, y: e.layerY, radius: _this2.radius
+          }), 200);
         });
       });
 
@@ -456,6 +461,9 @@ var Easle = function () {
         return document.addEventListener(ev, function (_) {
           _this2.mouse.isDown = false;
           _this2.tool.points = [];
+
+          _this2.interval && window.clearInterval(_this2.interval);
+          delete _this2.interval;
         });
       });
 
@@ -464,6 +472,9 @@ var Easle = function () {
       ['mousemove', 'touchmove'].forEach(function (ev) {
         return canvas.addEventListener(ev, function (e) {
           if (_this2.mouse.isDown) _this2.handleMouseMove(e);
+
+          _this2.interval && window.clearInterval(_this2.interval);
+          delete _this2.interval;
         });
       });
     }
@@ -472,8 +483,6 @@ var Easle = function () {
     value: function handleMouseMove(e) {
       var x = e.layerX,
           y = e.layerY;
-      // debugger
-
       var canvas = this.canvas,
           color = this.color,
           tool = this.tool,
@@ -514,6 +523,11 @@ var Easle = function () {
           break;
         case "spray":
           tool.spray({ canvas: canvas, color: color, x: x, y: y, radius: radius });
+          // if (!this.interval)
+          //   this.interval = window.setInterval(
+          //     tool.spray.bind(this ,{ canvas, color, x, y, radius }),
+          //     200
+          //   );
           break;
       }
     }
@@ -528,8 +542,6 @@ var Easle = function () {
   }, {
     key: 'resize',
     value: function resize() {
-      // this.canvas.width = this.canvas.clientWidth;
-      // this.canvas.height = window.innerHeight * 3 / 5;
       this.canvas.width = this.canvas.clientWidth;
       this.canvas.height = window.innerHeight;
       this.clear();
@@ -862,7 +874,8 @@ var splash = function splash() {
   var splashModal = document.getElementById('splash-modal');
   var startButton = document.getElementById('start-button');
 
-  startButton.addEventListener('click', closeModal.bind(null, splashModal));
+  /* startButton */ // After testing this, clicking the button wasn't obvious to non-programmers
+  window.addEventListener('click', closeModal.bind(null, splashModal));
 
   window.addEventListener('keydown', function (e) {
     return e.keyCode === 27 && closeModal(splashModal);

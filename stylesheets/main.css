@@ -70,20 +70,31 @@ body * {
 }
 #start-button {
 	font-size: 3em;
-	border: 5px solid black;
+	border: 10px solid black;
 	border-radius: 0.5em;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	transition: 0.15s;
 	font-weight: bold;
-}
-#start-button:hover {
-	cursor: pointer;
+	/*transition: 0.5s;*/
 }
 #start-button:hover {
 	background: red;
-	transition: 0.15s;
+	/*transition: 0.15s;*/
+	cursor: pointer;
+}
+.colorchange {
+	animation: flash linear 3s infinite;
+}
+.colorchange:hover {
+	animation: none;
+}
+@keyframes flash {
+	0% { background: lightgreen; }
+	25% { background: green; }
+	50% { background: green; }
+	100% { background: lightgreen}
 }
 #container {
 	width: 100%;
