@@ -2,22 +2,18 @@
 // 6 - 7 seconds to fill whole screen on chromebook... works, but slow
 // This is the fastest method I've found so far.
 class CoordinateHash {
-  constructor(coord){
-    this.hash = {}
-    if (coord) this.set(coord)
-  }
+  constructor(coord){ this.hash = {} }
   set({ x, y }){
-    const { hash } = this;
+    const { hash } = this
 
     if (hash[x])
-      hash[x][y] = true;
+      hash[x][y] = true
     else
       hash[x] = { [y]: true }
   }
   get({ x, y }){
-    const { hash } = this;
-    if (!hash[x]) return false
-    return Boolean(hash[x][y])
+    const { hash } = this
+    return !hash[x] ? false : Boolean(hash[x][y])
   }
 }
 

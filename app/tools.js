@@ -47,17 +47,12 @@ export default {
       context.fillStyle = color;
       context.fillRect(x, y, 1, 1)
 
-      color = context.getImageData(x, y, 1, 1).data; // overwrite "red" with [255, 0, 0, ?]
+      color = context.getImageData(x, y, 1, 1).data;
 
       const offsets = [
         [1, 0], [0, 1], [0, -1], [-1, 0],  // cardinal
         [1, 1], [1, -1], [-1, 1], [-1, -1] // diagonal
       ];
-
-      // offsets.push(
-      //   ... offsets.map(os => addMatricies(offsets, offsets)),
-      //   ... offsets.map(os => subtractMatricies(offsets, offsets))
-      // );
 
       let curr = {x, y}, temp = {}, currColor;
       const chash = new CoordinateHash()

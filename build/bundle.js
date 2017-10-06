@@ -674,16 +674,11 @@ exports.default = {
     context.fillStyle = color;
     context.fillRect(x, y, 1, 1);
 
-    color = context.getImageData(x, y, 1, 1).data; // overwrite "red" with [255, 0, 0, ?]
+    color = context.getImageData(x, y, 1, 1).data;
 
     var offsets = [[1, 0], [0, 1], [0, -1], [-1, 0], // cardinal
     [1, 1], [1, -1], [-1, 1], [-1, -1] // diagonal
     ];
-
-    // offsets.push(
-    //   ... offsets.map(os => addMatricies(offsets, offsets)),
-    //   ... offsets.map(os => subtractMatricies(offsets, offsets))
-    // );
 
     var curr = { x: x, y: y },
         temp = {},
@@ -787,7 +782,6 @@ var CoordinateHash = function () {
     _classCallCheck(this, CoordinateHash);
 
     this.hash = {};
-    if (coord) this.set(coord);
   }
 
   _createClass(CoordinateHash, [{
@@ -807,8 +801,7 @@ var CoordinateHash = function () {
           y = _ref2.y;
       var hash = this.hash;
 
-      if (!hash[x]) return false;
-      return Boolean(hash[x][y]);
+      return !hash[x] ? false : Boolean(hash[x][y]);
     }
   }]);
 
