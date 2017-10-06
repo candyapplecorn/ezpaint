@@ -77,12 +77,16 @@ body * {
 	justify-content: center;
 	transition: 0.15s;
 	font-weight: bold;
-	/*transition: 0.5s;*/
 }
 #start-button:hover {
 	background: red;
-	/*transition: 0.15s;*/
 	cursor: pointer;
+}
+.colorchange-hover-red:hover {
+	animation: flash-red linear 3s infinite;
+}
+.colorchange-hover-green:hover {
+	animation: flash linear 3s infinite;
 }
 .colorchange {
 	animation: flash linear 3s infinite;
@@ -95,6 +99,12 @@ body * {
 	25% { background: green; }
 	50% { background: green; }
 	100% { background: lightgreen}
+}
+@keyframes flash-red {
+	0% { background: red; }
+	25% { background: orange; }
+	50% { background: orange; }
+	100% { background: red; }
 }
 #container {
 	width: 100%;
@@ -173,7 +183,8 @@ canvas:hover { cursor: crosshair; }
 #size {
 	display: flex;
 	align-items: center;
-	background: transparent;
+	background: white;
+	border-radius: 0em 0em 1em 1em;
 }
 
 #size-labels {
@@ -181,6 +192,8 @@ canvas:hover { cursor: crosshair; }
 	justify-content: center;
 	border-bottom: 5px solid black;
 	padding: 0;
+	background: white;
+	border-radius: 1em 1em 0em 0em;
 }
 
 #size-labels p {

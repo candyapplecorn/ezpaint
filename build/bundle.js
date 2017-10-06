@@ -272,9 +272,28 @@ var SubscribableSlider = function () {
     this.subscribers = [];
     $input.addEventListener('change', this.onChange.bind(this));
     this.value = $input.value;
+    this.configureContainer();
   }
 
   _createClass(SubscribableSlider, [{
+    key: 'configureContainer',
+    value: function configureContainer() {
+      var _this = this;
+
+      var input = this.input;
+
+
+      document.getElementById('small').addEventListener('click', function (e) {
+        input.value = "10";
+        _this.onChange({ target: { value: input.value } });
+      });
+
+      document.getElementById('large').addEventListener('click', function (e) {
+        input.value = "50";
+        _this.onChange({ target: { value: input.value } });
+      });
+    }
+  }, {
     key: 'onChange',
     value: function onChange(e) {
       this.value = e.target.value;
@@ -283,10 +302,10 @@ var SubscribableSlider = function () {
   }, {
     key: 'emit',
     value: function emit() {
-      var _this = this;
+      var _this2 = this;
 
       this.subscribers.forEach(function (s) {
-        s(_this);
+        s(_this2);
       });
     }
   }]);
