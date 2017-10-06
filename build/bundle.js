@@ -481,8 +481,24 @@ var Easle = function () {
   }, {
     key: 'handleMouseMove',
     value: function handleMouseMove(e) {
+      var _this3 = this;
+
       var x = e.layerX,
           y = e.layerY;
+
+      /* Touch support! */
+
+      var touches = e.touches;
+
+      if (touches) if (touches && touches.length == 1) x = touches[0].clientX, y = touches[0].clientY;else if (touches && touches.length > 1) {
+        touches.forEach(function (t) {
+          return _this3.handleMouseMove({
+            x: t.clientX, y: t.clientY
+          });
+        });
+        return;
+      }
+
       var canvas = this.canvas,
           color = this.color,
           tool = this.tool,
