@@ -14,12 +14,12 @@ class DownloadOverlay {
     const { canvas } = this;
     const url = canvas.toDataURL('img/jpeg'), d = new Date();
 
-    canvas.setAttribute(
-      'download',
-      d.toLocaleDateString() +
-      d.toLocaleTimeString().replace(/ PM/, "") +
-      '.jpg'
-    )
+    // canvas.setAttribute(
+    //   'download',
+    //   d.toLocaleDateString() +
+    //   d.toLocaleTimeString().replace(/ PM/, "") +
+    //   '.jpg'
+    // )
 
     window.location = url;
   }
