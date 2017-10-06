@@ -4,6 +4,53 @@ body * {
 	margin-left: 0
 	margin-right: 0;
 }
+#splash-modal {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 6;
+	background: rgba(255, 255, 255, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+#splash *:not(h1){
+	font-family: 'Bree Serif', serif;
+}
+#splash img {
+	height: 5em;
+}
+#splash h1 {
+	padding-top: 0;
+	line-height: 0;
+}
+#splash h3:first-child {
+	line-height: 0;
+}
+#splash-logo {
+	font-size: 5em;
+}
+#start-button {
+	font-size: 3em;
+	border: 5px solid black;
+	border-radius: 0.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.15s;
+	font-weight: bold;
+}
+#start-button:hover {
+	cursor: pointer;
+}
+#start-button:hover {
+	background: red;
+	transition: 0.15s;
+}
 #container {
 	width: 100%;
 }

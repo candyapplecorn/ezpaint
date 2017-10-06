@@ -76,7 +76,7 @@ class Easle {
         case "bucket":
           toggleCursor('WAIT');
           window.setTimeout(() =>
-            tool.bucketPix({ canvas, color, x: e.layerX, y: e.layerY }), 25);
+            tool.bucket({ canvas, color, x: e.layerX, y: e.layerY }), 25);
           break;
         case "spray":
           tool.spray({ canvas, color, x, y, radius });

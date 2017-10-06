@@ -1,4 +1,8 @@
-import { toggleCursor, sameArray, coordToColor, setCoordToColor } from './util'
+import {
+  addMatricies, subtractMatricies,
+  toggleCursor, sameArray,
+  coordToColor, setCoordToColor
+} from './util'
 // import CantorPairingHash from './coordinate_hash';
 import CoordinateHash from './coordinate_hash';
 // import ToStringHash from './coordinate_hash';
@@ -10,7 +14,7 @@ export default {
       // const { offsetTop } = canvas
 
       context.beginPath();
-      context.arc(x - radius, y/* - offsetTop*/, radius, 0, 2 * Math.PI, false);
+      context.arc(x, y, radius, 0, 2 * Math.PI, false);
       context.fillStyle = color;
       context.fill();
     },
@@ -19,7 +23,7 @@ export default {
       // const { offsetTop } = canvas
 
       context.fillStyle = color;
-      context.fillRect(x - radius, y/* - offsetTop*/ - radius, radius + radius, radius + radius)
+      context.fillRect(x - radius, y - radius, radius + radius, radius + radius)
     },
     spray: ({ canvas, color, x, y, radius }) => {
       const context = canvas.getContext('2d');
@@ -30,10 +34,10 @@ export default {
       for (let i = 0, rx, ry; i < 10; i++){
         rx = Math.floor(Math.random() * radius - radius / 2)
         ry = Math.floor(Math.random() * radius - radius / 2)
-        context.fillRect(x - radius + rx, y /*- offsetTop*/ + ry, 2, 2);
+        context.fillRect(x + rx, y + ry, 2, 2);
       }
     },
-    bucketPix: ({ canvas, color, x, y }) => {
+    bucket: ({ canvas, color, x, y }) => {
       const context = canvas.getContext('2d')
       let imageData = context.getImageData(0, 0, canvas.width, canvas.height)
 
@@ -49,6 +53,11 @@ export default {
         [1, 0], [0, 1], [0, -1], [-1, 0],  // cardinal
         [1, 1], [1, -1], [-1, 1], [-1, -1] // diagonal
       ];
+
+      // offsets.push(
+      //   ... offsets.map(os => addMatricies(offsets, offsets)),
+      //   ... offsets.map(os => subtractMatricies(offsets, offsets))
+      // );
 
       let curr = {x, y}, temp = {}, currColor;
       const chash = new CoordinateHash()

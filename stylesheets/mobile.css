@@ -1,0 +1,14 @@
+@media all and (orientation: portrait) {
+  #splash {
+    font-size: 2.5em;
+  }
+  #top-gui, #bottom-gui {
+    font-size: 1.5em;
+  }
+}
+
+@media all and (min-width: 415px) and (max-width: 700px) {
+  #top-gui, #bottom-gui {
+    font-size: 0.75em;
+  }
+}

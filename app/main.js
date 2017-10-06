@@ -1,6 +1,7 @@
 import SubscribableSlider from './subscribable_slider';
 import SelectableList from './selectable_list';
 import Easle from './easle';
+import splash from './splash'
 
 document.addEventListener('DOMContentLoaded', e => {
 				const bottomGUI  = document.getElementById('bottom-gui');
@@ -17,6 +18,9 @@ document.addEventListener('DOMContentLoaded', e => {
 					toolPicker,
 					slider
 				});
+
+				// Add event listeners to splash screen so it may be closed.
+				splash();
 
 				window.ColorPicker = colorPicker
 				window.Easle = easle

@@ -67,3 +67,14 @@ export const toggleCursor = action => {
   body.style.cursor    = action == "WAIT" ? "wait" : "";
   canvas.style.cursor  = action == "WAIT" ? "wait" : "";
 };
+
+export const addMatricies = (m1, m2) => {
+  return m1.reduce((a, c, i) =>
+    ((a.push(m1[i] + m2[i])), a)
+  , [])
+}
+export const subtractMatricies = (m1, m2) => {
+  return m1.reduce((a, c, i) =>
+    ((a.push(m1[i] - m2[i])), a)
+  , [])
+}

@@ -4,12 +4,31 @@
   <meta charset="UTF-8">
   <title>Document</title>
 	<link rel="stylesheet" href="stylesheets/main.css">
-  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	<link rel="stylesheet" href="stylesheets/mobile.css">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Permanent+Marker" rel="stylesheet">
 </head>
 <body>
   <script src="build/bundle.js"></script>
 
 	<main id="container">
+    <div id="splash-modal">
+      <div id="splash">
+        <h3><em>Welcome to</em></h3>
+        <h1 id="splash-logo">EZPaint</h1>
+
+        <img src="assets/paintbrush.png"></img>
+
+        <h3>
+          Paint with brushes, a<br>
+          spray can and bucket above.<br>
+          Select colors below. <br>
+        </h3>
+
+        <div id="start-button">
+          S T A R T
+        </div>
+      </div>
+    </div>
 
     <div id="top-gui-container">
       <div id="top-gui">
@@ -27,7 +46,7 @@
           </div>
           <div id="size">
             <div id="small"></div>
-            <input type="range" min="10" max="30" step="10" value="10" />
+            <input type="range" min="10" max="50" step="10" value="10" />
             <div id="large"></div>
           </div>
         </div>
