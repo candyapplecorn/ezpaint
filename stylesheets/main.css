@@ -237,6 +237,17 @@ canvas:hover { cursor: crosshair; }
 	border: 5px solid black;
 	cursor: pointer;
 }
+.no-mobile{
+	height: 4em;
+	/*background: white;*/
+	position: absolute;
+	align-self: center;
+	right: 0;
+}
+.logo-link {
+	height: 100%;
+	/*background: white;*/
+}
 
 #white.selected, #white:hover { border: 5px solid black; }
 
