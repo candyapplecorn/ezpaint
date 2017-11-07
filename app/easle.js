@@ -110,11 +110,6 @@ class Easle {
           break;
         case "spray":
           tool.spray({ canvas, color, x, y, radius });
-          // if (!this.interval)
-          //   this.interval = window.setInterval(
-          //     tool.spray.bind(this ,{ canvas, color, x, y, radius }),
-          //     200
-          //   );
           break;
       }
     }

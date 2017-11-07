@@ -558,11 +558,6 @@ var Easle = function () {
           break;
         case "spray":
           tool.spray({ canvas: canvas, color: color, x: x, y: y, radius: radius });
-          // if (!this.interval)
-          //   this.interval = window.setInterval(
-          //     tool.spray.bind(this ,{ canvas, color, x, y, radius }),
-          //     200
-          //   );
           break;
       }
     }
@@ -647,14 +642,22 @@ exports.default = {
         radius = _ref3.radius;
 
     var context = canvas.getContext('2d');
-    // const { offsetTop } = canvas
+
     radius *= 1.5;
     context.fillStyle = color;
 
-    for (var i = 0, rx, ry; i < 10; i++) {
-      rx = Math.floor(Math.random() * radius - radius / 2);
-      ry = Math.floor(Math.random() * radius - radius / 2);
-      context.fillRect(x + rx, y + ry, 2, 2);
+    for (var i = 0, dx, dy, angle, r; i < 10; i++) {
+      // 1. Generate a random angle
+      angle = Math.random() * 2 * Math.PI;
+
+      // 2. Generate a random distance from center
+      r = Math.random() * radius;
+
+      // 3. Calculate the x and y coordinates using sin/cos
+      dx = Math.cos(angle) * r;
+      dy = Math.sin(angle) * r;
+
+      context.fillRect(x + dx, y + dy, 2, 2);
     }
   },
   bucket: function bucket(_ref4) {
