@@ -1,6 +1,6 @@
 # ezpaint
 
-**Browser-based paint program --** [ezpaint.us](http://www.ezpaint.us)
+**Browser-based paint program --** [try it out!](https://candyapplecorn.github.io/ezpaint/)
 
 ![demo](assets/demo.gif)
 
